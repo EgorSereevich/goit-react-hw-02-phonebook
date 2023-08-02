@@ -1,16 +1,23 @@
-export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
-  );
-};
+import React from 'react';
+import { Component } from 'react';
+import { FormPhonebook } from './FormPhonebook/FormPhonebook';
+import { ContactsList } from './Contacts/Contacts';
+class App extends Component {
+  state = {
+    contacts: [],
+    name: '',
+  };
+  addContact = evt => {
+    evt.preventDefault();
+    console.log(evt.target.elements.name.value);
+  };
+  render() {
+    return (
+      <div>
+        <FormPhonebook addContact={this.addContact} />
+        <ContactsList />
+      </div>
+    );
+  }
+}
+export { App };
