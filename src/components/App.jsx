@@ -17,14 +17,16 @@ class App extends Component {
   };
   onSubmitForm = ({ name, number }) => {
     const normalizedName = name.toLowerCase();
+    console.log(normalizedName);
     const contact = {
       id: nanoid(),
       name: name,
       number: number,
     };
+
     let add = true;
     this.state.contacts.forEach(el => {
-      if (normalizedName === el.name) {
+      if (normalizedName === el.name.toLowerCase()) {
         alert(`${el.name}is already in contacts`);
         add = false;
       }
